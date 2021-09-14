@@ -1,0 +1,36 @@
+﻿@model IEnumerable<LossTypes> 
+
+@{ Layout = "_Layout";
+                var title = "List LossType";
+                ViewData["Title"] = title; }
+
+<h2>@title</h2>
+
+@*<h3><a asp-action="Create" class="btn btn-sm btn-secondary">Create</a></h3>*@
+<table class="table table-bordered table-sm table-striped">
+    <thead>
+        <tr>
+            <th>LossTypeCode</th>
+            <th>LossTypeDescription</th>
+            <th>LossTypeID</th>
+             
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model == null)
+        {
+<tr><td colspan="7" class="text-center">No Model Data</td></tr> }
+            else
+            {
+@foreach (var p in Model)
+{
+<tr>
+    <td>@p.LossTypeCode</td>
+    <td>@p.LossTypeDescription</td>
+    <td>@p.LossTypeID</td>
+    
+
+     
+</tr>}}
+    </tbody>
+</table>
