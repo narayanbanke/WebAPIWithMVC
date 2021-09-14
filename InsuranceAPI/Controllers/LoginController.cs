@@ -37,10 +37,10 @@ namespace InsuranceAPI.Controllers
 
         
         [HttpGet("{Username},{password}")]
-        public user GetUser(string Username, string password)
+        public Users LoginUser(string Username, string password)
         {
             
-            var result = Task.FromResult(_dapper.Get<user>($"Select * from [user] where username = '{Username}' and Password =  '{password}' and Active='1' ", null, commandType: System.Data.CommandType.Text)).Result;
+            var result = Task.FromResult(_dapper.Get<Users>($"Select * from [Users] where username = '{Username}' and Password =  '{password}' and Active='1' ", null, commandType: System.Data.CommandType.Text)).Result;
             
             return result;
         }

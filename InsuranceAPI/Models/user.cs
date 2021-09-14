@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace InsuranceAPI.Models
 {
-    public class user
+    public class Users
     {
         public int UserID { get; set; }
         public string UserName { get; set; }

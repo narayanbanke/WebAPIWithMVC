@@ -64,7 +64,7 @@ namespace InsuranceAPPv1.Controllers
 
 
         [HttpPost]
-        public async Task<ActionResult> Index([Bind] user user)
+        public async Task<ActionResult> Index([Bind] Users user)
         {
             using (var client = new HttpClient())
             {
@@ -81,22 +81,24 @@ namespace InsuranceAPPv1.Controllers
                         return RedirectToAction("LossTypes");
                 }
                 else
-                {  return Json($" Login failed for {user.UserName}   .");
- 
+                { 
+                    //return Json($" Login failed for {user.UserName}   .");
+                    ViewBag.ErrorMessage = "UserName or Password is wrong";
+                    return View(user);
                 } 
             } 
             
         }
         
-        private user AuthenticateUser(user login)
+        private Users AuthenticateUser(Users login)
         {
 
-                    user user = null;
-            var result = Task.FromResult(_dapper.Get<user>($"Select * from [user] where username = '{login.UserName}' and Password =  '{login.Password}' and Active='1' ", null, commandType: System.Data.CommandType.Text));
+            Users user = null;
+            var result = Task.FromResult(_dapper.Get<Users>($"Select * from [user] where username = '{login.UserName}' and Password =  '{login.Password}' and Active='1' ", null, commandType: System.Data.CommandType.Text));
 
             if (result.Result != null)
             {
-                user = new user { UserID = result.Result.UserID, Password = result.Result.Password };
+                user = new Users { UserID = result.Result.UserID, Password = result.Result.Password };
             }
 
 

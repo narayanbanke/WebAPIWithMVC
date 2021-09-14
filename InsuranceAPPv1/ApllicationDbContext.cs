@@ -10,7 +10,7 @@ namespace InsuranceAPPv1
     {
         public ApllicationDbContext() { }   
         public ApllicationDbContext(DbContextOptions<ApllicationDbContext> options) : base(options) { }
-      public DbSet<Models.user> users { get; set; }
+      public DbSet<Models.Users> users { get; set; }
     
     }
 }
