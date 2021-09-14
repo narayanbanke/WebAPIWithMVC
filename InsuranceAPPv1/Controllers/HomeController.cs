@@ -37,7 +37,10 @@ namespace InsuranceAPPv1.Controllers
             List<LossTypes> LossTypesinfo = new List<LossTypes>();
             using (var client = new HttpClient())
             {
-                client.BaseAddress = new Uri("https://localhost:44326/");
+                // string dbConn = GetSection("MySettings").GetSection("DbConnection").Value;
+             string BaseAddress = _config.GetSection("BasAddress").GetSection("BasAddressUrl").Value;
+               // client.BaseAddress = new Uri("https://localhost:44326/");
+                client.BaseAddress = new Uri(BaseAddress);
                 
                 client.DefaultRequestHeaders.Clear();
                 //Define request data format
